@@ -7,8 +7,13 @@
 
 int main(int argc, char const *argv[])
 {
-    stopperOMP sw;
-    
+    //stopperOMP sw;
+
+    char *word = argv[1];
+    int threads = atoi(argv[2]);
+
+    printf("A keresett szó: %s\nA szálak száma: %d\n", word, threads);
+
     //startSOMP(&sw);
     //stopSOMP(&sw);   
 

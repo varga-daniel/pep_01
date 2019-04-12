@@ -15,5 +15,5 @@ _deps
 .vscode/
 
 # Projektfüggő.
-bin/
-libo/
+build/
+data/
