@@ -17,3 +17,5 @@ _deps
 # Projektfüggő.
 build/
 data/
+results/
+/graph.eps

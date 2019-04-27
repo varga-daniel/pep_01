@@ -10,7 +10,7 @@
 #   rajzolja ki.
 
 # A keresett szó.
-word="helló"
+word="lorem"
 
 # Megnézzük, hogy vannak-e paraméterek.
 if [ $# -eq 0 ]; then
@@ -39,15 +39,13 @@ do
 done
 
 # Töröljük ki az előző futtatások eredményeit, ha vannak.
-# 1-től 16-ig megyünk a biztonság kedvéért.
-for var in $(seq 1 16)
-do
-    if [ -f data/results-$var.dat ]; 
-    then
-        rm data/results-$var.dat
-        echo "data/results-$var.dat törölve."
-    fi
-done
+if [ -d "results" ]; 
+then
+    rm -R results/
+    echo "results/ mappa törölve."
+fi
+mkdir results/
+echo "results/ mappa létrehozva."
 
 # Ha eddig nem létezett, csináljunk egy data/ mappát.
 if [ ! -d "data" ]; 
@@ -75,10 +73,13 @@ cd ..
 
 # Futtassuk le a programot.
 # Ezt nyilván módosítani kell később, ez csak egy példa rész.
-for threads in "$@"
+for file in data/*.txt
 do
-    echo -e "Keressük a \033[1;34m$word\033[0m szót \033[1;33m$threads\033[0m szálon..."
-    ./build/bin/leszamlal $word $threads >> data/results-$threads.dat
+    for threads in "$@"
+    do
+        echo -e "Keressük a \033[1;34m$word\033[0m szót \033[1;33m$threads\033[0m szálon a \033[1;33m$file\033[0m fájlban..."
+        ./build/bin/leszamlal $word $threads $file >> results/$threads.dat
+    done
 done
 
 echo -e "\033[1;32mAdatgyűjtés kész!\033[0m"
@@ -88,4 +89,4 @@ echo -e "\033[1;32mAdatgyűjtés kész!\033[0m"
 
 #Rscirpt valami.R
 
-echo -e "\033[1;Gráf legenerálva!\033[0m"
+echo -e "\033[1;32mGráf legenerálva!\033[0m"
