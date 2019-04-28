@@ -84,9 +84,6 @@ done
 
 echo -e "\033[1;32mAdatgyűjtés kész!\033[0m"
 
-# Legeneráljuk az Rscriptet.
-# TODO.
-
-#Rscirpt valami.R
+Rscript graph.r
 
 echo -e "\033[1;32mGráf legenerálva!\033[0m"

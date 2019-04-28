@@ -13,7 +13,7 @@ fi
 mkdir data/
 echo "data/ mappa létrehozva."
 
-for i in $(seq -w 100000 100000 5000000)
+for i in $(seq -w 010000 10000 500000)
 do
     echo -e "\033[1;33m$i\033[0m bekezdés generálása..."
     ./lorem_ipsum_gen.pl $i >> data/$i.txt &
